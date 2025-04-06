@@ -1,27 +1,30 @@
 const CACHE_NAME = "v1";
-const ASSETS = [
-    "/",
-    "/index.html",
-    "/styles.css",
-    "/script.js",
-    "/images/logo.png", // Убедитесь, что пути соответствуют реальной структуре файлов
-];
 
-// Установка Service Worker
 self.addEventListener("install", (event) => {
-    event.waitUntil(
-        caches
-            .open(CACHE_NAME)
-            .then((cache) => cache.addAll(ASSETS))
-            .catch((err) => console.log("Ошибка кеширования:", err))
-    );
+    // Пропускаем этап предварительного кеширования
+    event.waitUntil(self.skipWaiting());
 });
 
-// Перехват запросов
 self.addEventListener("fetch", (event) => {
-    event.respondWith(
-        caches
-            .match(event.request)
-            .then((response) => response || fetch(event.request))
-    );
+    const url = new URL(event.request.url);
+
+    // Кешируем все запросы к папке /source/
+    if (url.pathname.startsWith("/source/")) {
+        event.respondWith(
+            caches.open(CACHE_NAME).then((cache) => {
+                return cache.match(event.request).then((response) => {
+                    return (
+                        response ||
+                        fetch(event.request).then((fetchResponse) => {
+                            cache.put(event.request, fetchResponse.clone());
+                            return fetchResponse;
+                        })
+                    );
+                });
+            })
+        );
+    } else {
+        // Для остальных запросов - стандартное поведение
+        event.respondWith(fetch(event.request));
+    }
 });
