@@ -1,165 +1,169 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* p {
   color: #fff;
 } */
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 a:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 footer {
-  background-color: #333;
-  overflow: auto;
-  padding: 10px;
+    background-color: #333;
+    overflow: auto;
+    padding: 10px;
 }
 
 footer a {
-  color: #fff;
+    color: #fff;
 }
 footer a:hover {
-  color: #fff;
+    color: #fff;
 }
 .navbar {
-  background-color: #2951a1;
+    background-color: #2951a1;
 }
 
 .navbar ul li {
-  display: inline-block;
+    display: inline-block;
 }
 
 .navbar li a {
-  text-decoration: none;
-  color: #fff;
-  padding: 10px;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
 }
 
 .navbar li a:hover {
-  background-color: #00457e;
+    background-color: #00457e;
 }
 
 .bgvideo {
-  height: 100vh;
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    height: 70vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .bgvideo video {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-  z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: 1;
 }
 
 .video-text {
-  color: rgb(255, 255, 255);
-  z-index: 2;
+    color: rgb(255, 255, 255);
+    z-index: 2;
 }
 
 .nav-link:hover {
-  color: #fff;
+    color: #fff;
 }
 
 section {
-  background-color: black;
-  overflow: auto;
+    background-color: black;
+    overflow: auto;
 }
 
 body {
-  background-color: #333;
+    background-color: #333;
 }
 
 .carousel-item-header {
-  color: #fff;
-  margin: 10px;
+    color: #fff;
+    margin: 10px;
 }
 
 .carousel-item-text {
-  color: #fff;
-  padding: 10px;
+    color: #fff;
+    padding: 10px;
 }
 
 footer.mt-4 {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .modal-text {
-  color: black;
+    color: black;
 }
 
 .navbar li a.active {
-  color: #333;
+    color: #333;
 }
 
 .museum-section {
-  background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgb(10, 27, 94) 100%);
+    background: linear-gradient(
+        0deg,
+        rgba(2, 0, 36, 1) 0%,
+        rgb(10, 27, 94) 100%
+    );
 }
 
 .card {
-  color: #e6e6e7;
-  background-color: #1b1b1c;
-  transition: ease 0.3s;
+    color: #e6e6e7;
+    background-color: #1b1b1c;
+    transition: ease 0.3s;
 }
 
 .card:hover {
-  transition: ease 0.3s;
-  box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+    transition: ease 0.3s;
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
 }
 
 .modal-text {
-  margin-top: 20px;
-  color: #e6e6e7;
+    margin-top: 20px;
+    color: #e6e6e7;
 }
 
 .formula {
-  color: #e6e6e7;
-  background-color: #1b1b1c;
-  border: 1px solid #000000;
-  padding: 10px;
-  margin: 10px 0;
-  font-family: "Courier New", monospace;
+    color: #e6e6e7;
+    background-color: #1b1b1c;
+    border: 1px solid #000000;
+    padding: 10px;
+    margin: 10px 0;
+    font-family: "Courier New", monospace;
 }
 ul {
-  margin-left: 20px;
+    margin-left: 20px;
 }
 
 .modal-img {
-  width: 100%;
-  margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .modal-body {
-  color: #e6e6e7;
-  background-color: #1b1b1c;
+    color: #e6e6e7;
+    background-color: #1b1b1c;
 }
 
 .modal-header {
-  color: #e6e6e7;
-  background-color: #1b1b1c;
+    color: #e6e6e7;
+    background-color: #1b1b1c;
 }
 
 .modal-footer {
-  color: #e6e6e7;
-  background-color: #1b1b1c;
+    color: #e6e6e7;
+    background-color: #1b1b1c;
 }
 
 .modal-video {
-  width: 100%;
+    width: 100%;
 }
 
 .logo-img {
-  width: 40px;
+    width: 40px;
 }
