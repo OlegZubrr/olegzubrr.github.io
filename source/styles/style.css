@@ -64,9 +64,15 @@ footer a:hover {
     z-index: 1;
 }
 
+.bgvideo h1 {
+    font-size: 4rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .video-text {
     color: rgb(255, 255, 255);
     z-index: 2;
+    font-size: 4rem;
 }
 
 .nav-link:hover {
@@ -166,4 +172,18 @@ ul {
 
 .logo-img {
     width: 40px;
+}
+
+@media (max-width: 900px) {
+    .bgvideo h1 {
+        font-size: 3rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+}
+
+@media (max-width: 700px) {
+    .bgvideo h1 {
+        font-size: 2rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
 }
