@@ -1,14 +1,25 @@
-const CACHE_NAME = "v1";
+const CACHE_NAME = "v2";
+
+self.addEventListener("activate", (event) => {
+    event.waitUntil(
+        caches.keys().then((cacheNames) => {
+            return Promise.all(
+                cacheNames.map((cache) => {
+                    if (cache !== CACHE_NAME) {
+                        return caches.delete(cache);
+                    }
+                })
+            );
+        })
+    );
+});
 
 self.addEventListener("install", (event) => {
-    // Пропускаем этап предварительного кеширования
     event.waitUntil(self.skipWaiting());
 });
 
 self.addEventListener("fetch", (event) => {
     const url = new URL(event.request.url);
-
-    // Кешируем все запросы к папке /source/
     if (url.pathname.startsWith("/source/")) {
         event.respondWith(
             caches.open(CACHE_NAME).then((cache) => {
@@ -24,7 +35,6 @@ self.addEventListener("fetch", (event) => {
             })
         );
     } else {
-        // Для остальных запросов - стандартное поведение
         event.respondWith(fetch(event.request));
     }
 });
