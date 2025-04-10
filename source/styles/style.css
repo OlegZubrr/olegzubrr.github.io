@@ -183,7 +183,7 @@ ul {
 
 @media (max-width: 700px) {
     .bgvideo h1 {
-        font-size: 2rem;
+        font-size: 1rem;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
     }
 }
