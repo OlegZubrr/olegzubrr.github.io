@@ -1,37 +1,39 @@
-const CACHE_NAME = "v8";
-
-self.addEventListener("activate", (event) => {
-    event.waitUntil(
-        caches.keys().then((cacheNames) => {
-            return Promise.all(
-                cacheNames.map((cache) => {
-                    if (cache !== CACHE_NAME) {
-                        return caches.delete(cache);
-                    }
-                })
-            );
-        })
-    );
-});
-
-self.addEventListener("install", (event) => {
-    event.waitUntil(self.skipWaiting());
-});
-
 self.addEventListener("fetch", (event) => {
     const url = new URL(event.request.url);
+
     if (url.pathname.startsWith("/source/")) {
         event.respondWith(
-            caches.open(CACHE_NAME).then((cache) => {
-                return cache.match(event.request).then((response) => {
+            caches.open(CACHE_NAME).then(async (cache) => {
+                try {
+                    const fetchResponse = await fetch(event.request);
+
+                    if (
+                        !fetchResponse ||
+                        fetchResponse.status !== 200 ||
+                        fetchResponse.type === "opaque"
+                    ) {
+                        console.warn(
+                            "Fetch failed or not cacheable",
+                            fetchResponse
+                        );
+                        const cachedResponse = await cache.match(event.request);
+                        return (
+                            cachedResponse ||
+                            new Response(null, { status: 404 })
+                        );
+                    }
+
+                    const responseToCache = fetchResponse.clone();
+                    cache.put(event.request, responseToCache);
+
+                    return fetchResponse;
+                } catch (error) {
+                    console.error("Fetch error in ServiceWorker:", error);
+                    const cachedResponse = await cache.match(event.request);
                     return (
-                        response ||
-                        fetch(event.request).then((fetchResponse) => {
-                            cache.put(event.request, fetchResponse.clone());
-                            return fetchResponse;
-                        })
+                        cachedResponse || new Response(null, { status: 404 })
                     );
-                });
+                }
             })
         );
     } else {
